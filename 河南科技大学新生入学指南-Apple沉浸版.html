@@ -73,6 +73,9 @@ body.intro-playing{overflow:hidden}.intro-overlay{position:fixed;inset:0;z-index
 .overview-stage{overflow:hidden}.overview-stage .official-inner{position:relative;z-index:1}.overview-stage::after{content:"";position:absolute;z-index:0;width:440px;height:440px;right:-190px;top:-225px;border:1px solid rgba(0,113,227,.16);border-radius:50%;box-shadow:0 0 0 38px rgba(0,113,227,.025),0 0 90px rgba(59,177,255,.12);opacity:0}.overview-stage.visible::after{animation:overviewHalo 1.8s cubic-bezier(.16,.86,.22,1) both}.overview-stage .eyebrow,.overview-stage .overview-heading,.overview-stage .overview-lead{transition-delay:0s}.overview-stage.visible .facts-strip{animation:overviewStripIn .9s cubic-bezier(.16,.86,.22,1) .3s both}.journey-section::after{content:"";position:absolute;width:440px;height:440px;right:-240px;top:-250px;border:1px solid rgba(174,255,246,.24);border-radius:50%;box-shadow:0 0 0 36px rgba(174,255,246,.025),0 0 100px rgba(79,212,201,.16);opacity:0;pointer-events:none}.journey-section .journey-kicker,.journey-section .journey-title,.journey-section .journey-copy{opacity:0;transform:translateY(24px);transition:opacity .72s ease,transform .72s cubic-bezier(.16,.86,.22,1)}.journey-section .journey-title{transition-delay:.12s}.journey-section .journey-copy{transition-delay:.24s}.journey-section.visible .journey-kicker,.journey-section.visible .journey-title,.journey-section.visible .journey-copy{opacity:1;transform:none}.journey-section.visible::after{animation:journeyHalo 1.5s cubic-bezier(.16,.86,.22,1) .16s both}.route-board.visible{animation:routeBoardIn .72s cubic-bezier(.16,.86,.22,1) both}@keyframes overviewHalo{from{opacity:0;transform:scale(.52) rotate(-18deg)}to{opacity:1;transform:none}}@keyframes overviewStripIn{from{opacity:0;transform:translateY(22px) scaleX(.94)}to{opacity:1;transform:none}}@keyframes journeyHalo{from{opacity:0;transform:scale(.42) rotate(22deg)}to{opacity:1;transform:none}}@keyframes routeBoardIn{from{opacity:0;transform:translateY(36px) scale(.97)}to{opacity:1;transform:none}}
 .intro-seal::after{display:none!important}
 @keyframes introSealScan{to{transform:translateX(120%)}}
+.freshman-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.tool-card{padding:20px;border:1px solid var(--line);border-radius:20px;background:color-mix(in srgb,var(--bg) 76%,transparent)}.tool-card h3{margin:0 0 8px}.tool-card p{margin:0 0 13px;color:var(--muted)}.tool-card input{width:100%;padding:11px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);font:inherit}.countdown-number{font-size:clamp(30px,4vw,46px);font-weight:750;line-height:1;margin:14px 0 6px}.checklist{display:grid;gap:8px}.checklist label{display:flex;gap:9px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer}.checklist label:last-child{border-bottom:0}.checklist input{width:auto;margin-top:5px}.report-steps{display:grid;gap:9px;margin:0;padding:0;list-style:none;counter-reset:report}.report-steps li{counter-increment:report;display:flex;gap:10px;align-items:flex-start}.report-steps li::before{content:counter(report);flex:0 0 25px;height:25px;display:grid;place-items:center;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:13px}.tool-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.tool-action{border:0;border-radius:999px;padding:10px 14px;background:var(--blue);color:#fff;font:inherit;font-weight:650;cursor:pointer}.tool-action.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}.emergency-links{display:grid;gap:8px}.emergency-links a{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:12px;background:var(--panel);text-decoration:none}.emergency-links i{color:var(--blue);width:18px}@media(max-width:880px){.freshman-tools{grid-template-columns:1fr}}
+.ai-embed{width:100%;height:min(950px,85vh);border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)}
+.campus-video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.campus-video-card{position:relative;display:flex;min-height:170px;flex-direction:column;justify-content:flex-end;padding:22px;border:1px solid rgba(151,237,229,.2);border-radius:20px;background:linear-gradient(145deg,#0a2631,#113e4b);color:#effffc;text-decoration:none;overflow:hidden;transition:transform .25s,box-shadow .25s}.campus-video-card::before{content:"";position:absolute;inset:-35%;background:radial-gradient(circle at 80% 20%,rgba(108,237,220,.25),transparent 28%),radial-gradient(circle at 15% 85%,rgba(84,116,226,.23),transparent 31%);transition:transform .5s}.campus-video-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(0,0,0,.2)}.campus-video-card:hover::before{transform:scale(1.12)}.campus-video-card>*{position:relative}.campus-video-card i{margin-bottom:auto;color:#9df1e7;font-size:25px}.campus-video-card h3{margin:18px 0 5px;font-size:22px}.campus-video-card p{margin:0;color:rgba(239,255,252,.68);font-size:14px}.campus-video-card span{margin-top:14px;color:#baf1ea;font-size:13px;font-weight:700}@media(max-width:880px){.campus-video-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body class="intro-playing">
@@ -80,7 +83,7 @@ body.intro-playing{overflow:hidden}.intro-overlay{position:fixed;inset:0;z-index
   <div class="intro-grid"></div>
   <div class="intro-content">
     <div class="intro-word">HAUST</div>
-    <div class="intro-seal"><img src="haust-seal.png" alt=""></div>
+    <div class="intro-seal"><img src="assets/haust-seal.png" alt=""></div>
     <p class="intro-subtitle">HENAN UNIVERSITY OF SCIENCE &amp; TECHNOLOGY</p>
     <div class="intro-line"></div>
   </div>
@@ -93,11 +96,11 @@ body.intro-playing{overflow:hidden}.intro-overlay{position:fixed;inset:0;z-index
     <p class="support-copy">关注抖音可以看到更多科大新生内容，也可以添加微信。有入学、宿舍、报道或校园生活方面的问题，都可以直接问。</p>
     <div class="qr-grid">
       <figure class="qr-card">
-        <img src="wechat-qrcode.jpg" alt="科大小猫学长微信二维码">
+        <img src="assets/wechat-qrcode.jpg" alt="科大小猫学长微信二维码">
         <figcaption>添加微信<small>微信号：xuedine1<br>有问题都可以问，也可进入新生交流群</small></figcaption>
       </figure>
       <figure class="qr-card">
-        <img src="douyin-qrcode.jpg" alt="学定饿的猫学长抖音二维码">
+        <img src="assets/douyin-qrcode.jpg" alt="学定饿的猫学长抖音二维码">
         <figcaption>关注抖音<small>学定饿的猫 · 抖音号 fzyLibra6</small></figcaption>
       </figure>
     </div>
@@ -110,18 +113,19 @@ body.intro-playing{overflow:hidden}.intro-overlay{position:fixed;inset:0;z-index
     <div class="brand"><div class="brand-mark"><i class="fas fa-university"></i></div><span>HAUST Freshman Guide</span></div>
     <div class="top-actions">
       <button class="icon-btn" id="themeToggle" title="切换明暗模式"><i class="fas fa-circle-half-stroke"></i></button>
+      <a class="chip-btn" href="河科大新生通AI答疑.html" title="打开 AI 新生答疑"><i class="fas fa-robot"></i> AI 答疑</a>
       <a class="chip-btn" href="#guide-content" title="进入正文"><i class="fas fa-compass"></i> 开始探索</a>
     </div>
   </div>
 </nav>
 <header class="hero">
   <div class="hero-media" aria-hidden="true">
-    <img src="campus-hero-apple.png" alt="">
+    <img src="assets/campus-hero-apple.png" alt="">
   </div>
   <div class="hero-wordmark" aria-hidden="true">HAUST</div>
   <div class="seal-stage" aria-label="河南科技大学校徽">
     <div class="seal-core">
-      <img src="haust-seal.png" alt="河南科技大学校徽">
+      <img src="assets/haust-seal.png" alt="河南科技大学校徽">
       <div class="seal-glint" aria-hidden="true"></div>
     </div>
     <div class="seal-caption">EST. 1952 · LUOYANG</div>
@@ -217,6 +221,18 @@ body.intro-playing{overflow:hidden}.intro-overlay{position:fixed;inset:0;z-index
             <div class="toc-grid">
                 <!-- 核心内容入口 -->
                 <div class="toc-item">
+                    <a href="#freshman-glossary"><i class="fas fa-lightbulb"></i> 新生名词速懂</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#freshman-tools"><i class="fas fa-toolbox"></i> 新生实用工具箱</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#ai-assistant"><i class="fas fa-robot"></i> AI 新生答疑</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#campus-video"><i class="fas fa-play-circle"></i> 云游校园视频</a>
+                </div>
+                <div class="toc-item">
                     <a href="#address"><i class="fas fa-map-marker-alt"></i> 学校地址</a>
                 </div>
                 <div class="toc-item">
@@ -303,6 +319,111 @@ body.intro-playing{overflow:hidden}.intro-overlay{position:fixed;inset:0;z-index
         </div>
         
         <!-- 原有内容部分 -->
+        <div class="content-section" id="freshman-glossary">
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i> 新生名词速懂</h2>
+            <div class="info-card">
+                <p>刚进大学时听到这些词不用慌。下面是最常用的“人话版”解释；具体计算和要求以学院、教务通知为准。</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-chart-line"></i> 绩点（GPA）</h3>
+                    <p>可以理解为课程成绩的“加权平均表现”。分数越高，通常对应绩点越高；学分多的课，对总绩点影响也更大。</p>
+                    <p><strong>为什么重要：</strong>奖学金、评优、保研、转专业等常会参考它。大一开始就别轻视每一门课。</p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-medal"></i> 综测（综合测评）</h3>
+                    <p>不只看考试成绩，还会综合学业、志愿服务、竞赛、学生工作、获奖和日常表现等情况进行评价。</p>
+                    <p><strong>建议：</strong>保留证书、活动证明和获奖材料，按学院通知及时登记，别到评奖时才找材料。</p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-running"></i> 校园跑</h3>
+                    <p>通常是体育课或体质健康相关的跑步打卡任务，会有次数、距离、配速和有效时间段等要求。</p>
+                    <p><strong>提醒：</strong>先看本学期体育老师或平台通知；安全第一，不要替跑、刷跑或在身体不适时硬跑。</p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-book-open"></i> 学分</h3>
+                    <p>每门课都有对应学分，修满培养方案要求的总学分，通常是毕业的基本条件之一。专业课、选修课的作用不同。</p>
+                    <p><strong>建议：</strong>选课前先看培养方案，别只挑“听起来轻松”的课。</p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-clipboard-check"></i> 挂科 / 补考 / 重修</h3>
+                    <p>课程未通过通常称为挂科；学校可能安排补考，补考仍未通过或按规定需要时则要重修。</p>
+                    <p><strong>关键：</strong>及时关注教务系统和学院通知，不要错过报名、考试或缴费时间。</p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-users"></i> 班委、辅导员与导员</h3>
+                    <p>班委负责班级日常沟通与事务；辅导员（大家也常叫导员）主要负责学生管理、奖助、思想教育和事务协调。</p>
+                    <p><strong>遇到问题：</strong>先查官方通知，再联系班委或辅导员，表达清楚自己的学院、专业、姓名和具体情况。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section" id="freshman-tools">
+            <h2 class="section-title"><i class="fas fa-toolbox"></i> 新生实用工具箱</h2>
+            <div class="freshman-tools">
+                <section class="tool-card">
+                    <h3><i class="fas fa-calendar-day"></i> 我的报到倒计时</h3>
+                    <p>选择你的报到日期，网站会自动计算剩余天数。</p>
+                    <input type="date" id="reportDate" aria-label="选择报到日期">
+                    <div class="countdown-number" id="reportCountdown">请选择日期</div>
+                    <small id="reportCountdownHint">日期会保存在这台设备上。</small>
+                </section>
+                <section class="tool-card">
+                    <h3><i class="fas fa-list-check"></i> 报到待办清单</h3>
+                    <div class="checklist" id="reportChecklist">
+                        <label><input type="checkbox" data-report-task="notice">带好录取通知书、身份证及相关材料</label>
+                        <label><input type="checkbox" data-report-task="payment">确认缴费、资助或绿色通道事项</label>
+                        <label><input type="checkbox" data-report-task="apps">下载并登录学校要求的 App</label>
+                        <label><input type="checkbox" data-report-task="dorm">确认宿舍、交通与到校路线</label>
+                    </div>
+                </section>
+                <section class="tool-card">
+                    <h3><i class="fas fa-route"></i> 报到当天怎么走</h3>
+                    <ol class="report-steps">
+                        <li>到校后先按学院通知找到报到点。</li>
+                        <li>核验材料、领取报到相关物品。</li>
+                        <li>前往宿舍办理入住，安放行李。</li>
+                        <li>按学院或学校通知完成后续事项。</li>
+                    </ol>
+                    <div class="tool-actions"><a class="tool-action secondary" href="#map">查看校园地图</a></div>
+                </section>
+                <section class="tool-card">
+                    <h3><i class="fas fa-life-ring"></i> 常用求助入口</h3>
+                    <p>遇到紧急情况先联系身边老师、宿管或保卫人员；非紧急事务优先查看学院官方群通知。</p>
+                    <div class="emergency-links">
+                        <a href="#official-website"><i class="fas fa-globe"></i> 学校官方网站与官方入口</a>
+                        <a href="#medical"><i class="fas fa-kit-medical"></i> 校医院与医疗信息</a>
+                        <a href="#phone-card"><i class="fas fa-comments"></i> 联系学长咨询常见问题</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="content-section" id="ai-assistant">
+            <h2 class="section-title"><i class="fas fa-robot"></i> 河科大新生通 AI 答疑</h2>
+            <div class="info-card"><p>报到、宿舍、校园卡、校园网等问题可以直接在这里提问。页面下方也提供人工咨询入口。</p></div>
+            <iframe class="ai-embed" src="河科大新生通AI答疑.html" title="河科大新生通 AI 新生答疑" loading="lazy"></iframe>
+        </div>
+
+        <div class="content-section motion-section" id="campus-video">
+            <h2 class="section-title"><i class="fas fa-play-circle"></i> 云游校园视频</h2>
+            <div class="info-card"><p>跟着视频提前逛一遍校园。点击卡片将在抖音打开对应视频。</p></div>
+            <div class="campus-video-grid">
+                <a class="campus-video-card" href="https://v.douyin.com/hr6ocdlitPI/" target="_blank" rel="noopener">
+                    <i class="fas fa-location-dot"></i><h3>开元校区 · 嘉园菁园</h3><p>宿舍区与校园生活路线</p><span>去抖音观看 <i class="fas fa-arrow-up-right-from-square"></i></span>
+                </a>
+                <a class="campus-video-card" href="https://v.douyin.com/XGOu0jwUbjs/" target="_blank" rel="noopener">
+                    <i class="fas fa-location-dot"></i><h3>开元校区 · 乾园等</h3><p>继续探索开元校区</p><span>去抖音观看 <i class="fas fa-arrow-up-right-from-square"></i></span>
+                </a>
+                <a class="campus-video-card" href="https://v.douyin.com/XGOu0jwUbjs/" target="_blank" rel="noopener">
+                    <i class="fas fa-road"></i><h3>龙翔街</h3><p>校园周边生活与出行</p><span>去抖音观看 <i class="fas fa-arrow-up-right-from-square"></i></span>
+                </a>
+                <a class="campus-video-card" href="https://v.douyin.com/WH3asS7m-S0/" target="_blank" rel="noopener">
+                    <i class="fas fa-building-columns"></i><h3>西苑校区</h3><p>西苑校区漫游视频</p><span>去抖音观看 <i class="fas fa-arrow-up-right-from-square"></i></span>
+                </a>
+            </div>
+        </div>
+
           <div class="content-section" id="address">
             <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> 学校地址</h2>
             <div class="info-card">
@@ -1306,7 +1427,7 @@ body.intro-playing{overflow:hidden}.intro-overlay{position:fixed;inset:0;z-index
                 <div class="map-card">
                     <h3 class="map-title"><i class="fas fa-map-signs"></i> 开元校区地图</h3>
                     <div class="map-illustration">
-                        <img src="haust-campus-map.png" alt="河南科技大学开元校区手绘地图">
+                        <img src="assets/haust-campus-map.png" alt="河南科技大学开元校区手绘地图">
                     </div>
                     <p>地址：洛阳市洛龙区开元大道263号</p>
                     <p>占地面积：约3560亩</p>
@@ -2044,6 +2165,33 @@ body.intro-playing{overflow:hidden}.intro-overlay{position:fixed;inset:0;z-index
   });
   const savedTheme = localStorage.getItem('haust-theme');
   if (savedTheme) body.dataset.theme = savedTheme;
+  const reportDate = document.getElementById('reportDate');
+  const reportCountdown = document.getElementById('reportCountdown');
+  const reportCountdownHint = document.getElementById('reportCountdownHint');
+  const updateReportCountdown = () => {
+    if (!reportDate?.value) return;
+    const target = new Date(`${reportDate.value}T00:00:00`);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const days = Math.ceil((target - today) / 86400000);
+    reportCountdown.textContent = days > 0 ? `还有 ${days} 天` : days === 0 ? '就是今天，出发！' : '报到日已过';
+    reportCountdownHint.textContent = `目标日期：${reportDate.value}`;
+    localStorage.setItem('haust-report-date', reportDate.value);
+  };
+  if (reportDate) {
+    reportDate.value = localStorage.getItem('haust-report-date') || '';
+    reportDate.addEventListener('change', updateReportCountdown);
+    updateReportCountdown();
+  }
+  const reportTasks = [...document.querySelectorAll('[data-report-task]')];
+  try {
+    const savedTasks = JSON.parse(localStorage.getItem('haust-report-tasks') || '{}');
+    reportTasks.forEach((task) => { task.checked = Boolean(savedTasks[task.dataset.reportTask]); });
+  } catch {}
+  reportTasks.forEach((task) => task.addEventListener('change', () => {
+    const state = Object.fromEntries(reportTasks.map((item) => [item.dataset.reportTask, item.checked]));
+    localStorage.setItem('haust-report-tasks', JSON.stringify(state));
+  }));
   const toast = document.createElement('div');
   toast.className = 'toast';
   document.body.appendChild(toast);

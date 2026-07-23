@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="面向河南科技大学新生的资料导航、智能答疑与人工咨询入口。">
+  <title>河科大新生通｜2026 新生答疑助手</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+  <style>
+    :root { --blue:#0759d6; --blue-deep:#053e9f; --sky:#eef7ff; --ink:#10244a; --muted:#62718d; --line:#dce7f6; --white:#fff; --mint:#e9f8f2; --orange:#ffae18; --shadow:0 18px 44px rgba(15, 73, 162, .13); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif; background:linear-gradient(180deg,#eff8ff 0,#fff 420px); }
+    button,input { font:inherit; }
+    button { cursor:pointer; }
+    a { color:inherit; }
+    .shell { width:min(1120px,calc(100% - 32px)); margin:0 auto; }
+    .topbar { position:sticky; top:0; z-index:20; backdrop-filter:blur(12px); background:rgba(255,255,255,.9); border-bottom:1px solid rgba(220,231,246,.82); }
+    .topbar .shell { height:68px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:800; letter-spacing:.02em; }
+    .brand-badge { display:grid; place-items:center; width:36px; height:36px; color:#fff; background:var(--blue); border-radius:11px; font-size:17px; box-shadow:0 7px 16px rgba(7,89,214,.26); }
+    .topnav { display:flex; gap:19px; align-items:center; color:#40516f; font-size:14px; }
+    .topnav a { text-decoration:none; }
+    .topnav a:hover { color:var(--blue); }
+    .nav-help { border:0; color:#fff; background:var(--blue); border-radius:10px; padding:10px 14px; font-weight:700; }
+
+    .hero { padding:64px 0 38px; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns:1.04fr .96fr; gap:38px; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:7px; padding:7px 11px; border-radius:999px; color:var(--blue); background:#e3f0ff; font-size:13px; font-weight:800; letter-spacing:.05em; }
+    h1 { max-width:660px; margin:18px 0 16px; font-size:clamp(39px,5.5vw,67px); line-height:1.08; letter-spacing:-.055em; }
+    h1 strong { color:var(--blue); }
+    .hero-copy { max-width:596px; margin:0; color:var(--muted); line-height:1.8; font-size:17px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin:26px 0 22px; }
+    .primary-btn,.secondary-btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:48px; padding:0 19px; text-decoration:none; border-radius:13px; font-weight:800; border:1px solid transparent; transition:transform .2s, box-shadow .2s; }
+    .primary-btn { color:#fff; background:var(--blue); box-shadow:0 12px 24px rgba(7,89,214,.24); }
+    .secondary-btn { color:var(--blue); background:#fff; border-color:#bfd8fb; }
+    .primary-btn:hover,.secondary-btn:hover { transform:translateY(-2px); }
+    .trust { display:flex; gap:19px; flex-wrap:wrap; color:#52627f; font-size:13px; }
+    .trust span { display:inline-flex; gap:7px; align-items:center; }
+    .trust i { color:#28a66f; }
+    .hero-question-form { display:flex; gap:9px; max-width:590px; margin:23px 0 16px; padding:6px; border:1px solid #c8ddf7; border-radius:15px; background:#fff; box-shadow:0 12px 28px rgba(23,84,171,.09); }
+    .hero-question-form input { min-width:0; flex:1; border:0; outline:0; padding:0 10px; color:var(--ink); background:transparent; }
+    .hero-question-form button { flex:none; border:0; border-radius:10px; padding:10px 15px; color:#fff; background:var(--blue); font-weight:800; }
+    .campus-card { position:relative; border-radius:27px; overflow:hidden; min-height:385px; background:#d6ecff; box-shadow:var(--shadow); }
+    .campus-card img { width:100%; height:100%; min-height:385px; display:block; object-fit:cover; object-position:57% center; }
+    .campus-card::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(7,43,104,0) 49%,rgba(7,43,104,.58) 100%); pointer-events:none; }
+    .campus-caption { position:absolute; z-index:1; left:22px; right:22px; bottom:20px; display:flex; align-items:end; justify-content:space-between; gap:16px; color:#fff; }
+    .campus-caption strong { display:block; margin-bottom:4px; font-size:19px; }
+    .campus-caption span { font-size:13px; opacity:.92; }
+    .year-pill { flex:none; border:1px solid rgba(255,255,255,.55); border-radius:999px; padding:7px 11px; background:rgba(255,255,255,.18); font-size:12px; font-weight:800; }
+
+    .quick-section { padding:22px 0 54px; }
+    .quick-head { display:flex; justify-content:space-between; gap:16px; align-items:end; margin-bottom:17px; }
+    .quick-head h2,.section-title { margin:0; font-size:24px; letter-spacing:-.03em; }
+    .quick-head p { margin:0; color:var(--muted); font-size:14px; }
+    .quick-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; }
+    .quick-card { min-height:112px; padding:16px 12px; border:1px solid var(--line); border-radius:17px; background:#fff; color:var(--ink); text-align:left; box-shadow:0 8px 20px rgba(28,74,145,.05); transition:transform .2s,border-color .2s,box-shadow .2s; }
+    .quick-card:hover { transform:translateY(-4px); border-color:#86b8ff; box-shadow:0 15px 27px rgba(21,79,168,.12); }
+    .quick-card i { display:block; margin-bottom:13px; color:var(--blue); font-size:23px; }
+    .quick-card:nth-child(2) i { color:#8c53db; } .quick-card:nth-child(3) i { color:#ec8a09; } .quick-card:nth-child(4) i { color:#17a66c; } .quick-card:nth-child(5) i { color:#ef5f70; } .quick-card:nth-child(6) i { color:#1777da; }
+    .quick-card strong { display:block; font-size:15px; }.quick-card small { display:block; margin-top:5px; color:#75829a; font-size:12px; }
+
+    .ai-wrap { padding:62px 0; background:#f4f9ff; border-top:1px solid #e7f0fa; border-bottom:1px solid #e7f0fa; }
+    .ai-layout { display:grid; grid-template-columns:.8fr 1.2fr; gap:30px; align-items:start; }
+    .ai-intro { padding:25px 0; }
+    .ai-icon { display:grid; place-items:center; width:52px; height:52px; margin-bottom:18px; border-radius:16px; color:#fff; background:var(--blue); font-size:23px; box-shadow:0 13px 24px rgba(7,89,214,.21); }
+    .ai-intro h2 { margin:0 0 13px; font-size:34px; letter-spacing:-.045em; line-height:1.22; }
+    .ai-intro h2 span { color:var(--blue); }.ai-intro p { margin:0; color:var(--muted); line-height:1.8; }
+    .ask-suggestions { display:flex; flex-wrap:wrap; gap:8px; margin-top:21px; }
+    .ask-suggestions button { border:1px solid #cfe2fb; border-radius:999px; padding:8px 11px; background:#fff; color:#456180; font-size:13px; }
+    .ask-suggestions button:hover { color:var(--blue); border-color:#81b7fb; }
+    .chat-card { overflow:hidden; border:1px solid #d7e6f6; border-radius:23px; background:#fff; box-shadow:var(--shadow); }
+    .chat-top { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:15px 18px; border-bottom:1px solid #e9f0f8; }
+    .chat-title { display:flex; align-items:center; gap:10px; font-weight:800; }.chat-title .dot { width:10px; height:10px; border-radius:50%; background:#25b36a; box-shadow:0 0 0 4px #dcf6e8; }
+    .chat-actions { display:flex; align-items:center; gap:9px; }.chat-top small { color:#6f829f; }.clear-chat { border:0; border-radius:8px; padding:6px 8px; color:#667794; background:#f0f5fb; font-size:12px; }.clear-chat:hover { color:var(--blue); background:#e7f1ff; }
+    .chat-log { min-height:322px; max-height:430px; overflow:auto; padding:18px; background:linear-gradient(180deg,#fff,#fbfdff); }
+    .message { display:flex; gap:10px; margin-bottom:15px; align-items:flex-start; }.message.user { flex-direction:row-reverse; }
+    .message-avatar { display:grid; place-items:center; flex:none; width:31px; height:31px; border-radius:10px; color:#fff; background:var(--blue); font-size:12px; font-weight:900; }
+    .message.user .message-avatar { background:#6c82a7; }
+    .bubble { max-width:81%; padding:11px 13px; border-radius:3px 14px 14px 14px; background:#edf5ff; color:#294264; line-height:1.65; font-size:14px; }
+    .message.user .bubble { border-radius:14px 3px 14px 14px; background:var(--blue); color:#fff; }
+    .bubble a { color:var(--blue); font-weight:700; }.message.user .bubble a { color:#fff; }.bubble .source { display:block; margin-top:7px; color:#6e7e99; font-size:12px; }.message.user .bubble .source { color:rgba(255,255,255,.75); }
+    .chat-input-row { display:flex; gap:9px; padding:13px; border-top:1px solid #e9f0f8; }
+    .chat-input-row input { min-width:0; flex:1; border:1px solid #d6e3f3; border-radius:12px; padding:0 13px; outline:none; color:var(--ink); }.chat-input-row input:focus { border-color:#5b9dff; box-shadow:0 0 0 3px rgba(55,132,248,.12); }
+    .send-btn { width:46px; border:0; border-radius:12px; color:#fff; background:var(--blue); font-size:16px; }.send-btn:hover { background:var(--blue-deep); }
+    .chat-note { margin:0; padding:0 16px 15px; color:#7d8ba3; font-size:12px; line-height:1.5; }
+    .loading-mark { margin-right:6px; color:var(--blue); }.chat-card.is-loading .send-btn { opacity:.62; pointer-events:none; }.chat-card.is-loading input { background:#fbfdff; }
+
+    .source-section { padding:64px 0; }
+    .section-lead { max-width:640px; margin:11px 0 25px; color:var(--muted); line-height:1.75; }
+    .guide-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .guide-card { display:flex; flex-direction:column; min-height:216px; padding:22px; border:1px solid var(--line); border-radius:19px; background:#fff; }
+    .guide-card h3 { margin:0 0 9px; font-size:18px; }.guide-card p { margin:0; color:#61718c; line-height:1.7; font-size:14px; }.guide-card a { margin-top:auto; padding-top:15px; color:var(--blue); text-decoration:none; font-size:13px; font-weight:800; }
+    .guide-card a i { margin-left:5px; }
+
+    .human-section { padding:0 0 68px; }
+    .human-card { display:grid; grid-template-columns:1fr auto; gap:28px; align-items:center; padding:32px; border-radius:25px; color:#fff; background:#0b4fb9; box-shadow:0 18px 40px rgba(7,89,214,.22); }
+    .human-card .eyebrow { color:#dcecff; background:rgba(255,255,255,.13); }.human-card h2 { margin:14px 0 8px; font-size:30px; letter-spacing:-.04em; }.human-card p { max-width:630px; margin:0; color:#dbeaff; line-height:1.75; }.human-card button { min-width:172px; border:0; border-radius:14px; padding:15px 19px; color:#643b00; background:#ffbc35; font-weight:900; box-shadow:0 10px 22px rgba(0,0,0,.14); }.human-card button:hover { background:#ffcb58; }
+    footer { padding:24px 0 31px; border-top:1px solid #e3edf7; color:#71809a; font-size:12px; line-height:1.8; }.footer-row { display:flex; justify-content:space-between; gap:16px; }.footer-row a { color:var(--blue); }
+    .modal { position:fixed; inset:0; z-index:50; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(5,28,66,.56); }.modal.open { display:flex; }.modal-panel { position:relative; width:min(410px,100%); padding:29px; border-radius:22px; background:#fff; text-align:center; box-shadow:0 24px 64px rgba(0,0,0,.24); }.modal-panel h2 { margin:7px 0 8px; font-size:24px; }.modal-panel p { margin:0 auto 17px; color:#667690; line-height:1.7; font-size:14px; }.modal-panel img { display:block; width:min(230px,75vw); margin:0 auto 14px; border:1px solid #e3eaf3; border-radius:12px; }.modal-close { position:absolute; top:12px; right:13px; width:35px; height:35px; border:0; border-radius:10px; color:#63708a; background:#f0f5fa; }.copy-wechat { border:1px solid #c6defb; border-radius:10px; padding:10px 13px; color:var(--blue); background:#f6fbff; font-weight:800; }
+    .toast { position:fixed; z-index:60; left:50%; bottom:22px; display:none; transform:translateX(-50%); padding:10px 15px; border-radius:999px; color:#fff; background:#172946; box-shadow:0 9px 22px rgba(8,22,48,.24); font-size:13px; }.toast.show { display:block; }
+    @media (max-width:850px) { .hero { padding-top:42px; }.hero-grid,.ai-layout { grid-template-columns:1fr; }.campus-card { order:-1; min-height:275px; }.campus-card img { min-height:275px; }.quick-grid { grid-template-columns:repeat(3,1fr); }.guide-grid { grid-template-columns:repeat(2,1fr); }.ai-intro { padding:0; }.chat-log { min-height:290px; }.topnav a { display:none; } }
+    @media (max-width:560px) { body { background:linear-gradient(180deg,#eff8ff 0,#fff 340px); }.shell { width:min(100% - 24px,1120px); }.topbar .shell { height:60px; }.brand { font-size:14px; }.brand-badge { width:32px; height:32px; border-radius:10px; }.nav-help { padding:8px 10px; font-size:13px; }.hero { padding:27px 0 28px; }.hero-grid { gap:23px; }.campus-card { min-height:224px; border-radius:20px; }.campus-card img { min-height:224px; }.campus-caption { left:15px; right:15px; bottom:15px; }.campus-caption strong { font-size:16px; }.year-pill { padding:6px 8px; } h1 { margin:13px 0; font-size:41px; }.hero-copy { font-size:15px; }.hero-actions { margin:20px 0 13px; }.hero-question-form { margin:18px 0 13px; }.hero-question-form input { font-size:13px; }.hero-question-form button { padding:10px 11px; font-size:13px; }.primary-btn,.secondary-btn { flex:1; min-height:46px; padding:0 12px; font-size:14px; }.trust { gap:9px 13px; }.quick-section { padding-bottom:38px; }.quick-head { align-items:start; flex-direction:column; }.quick-grid { gap:9px; }.quick-card { min-height:103px; padding:13px 10px; border-radius:14px; }.quick-card i { margin-bottom:10px; font-size:20px; }.quick-card small { font-size:11px; }.ai-wrap,.source-section { padding:43px 0; }.ai-layout { gap:17px; }.ai-intro h2 { font-size:29px; }.chat-card { border-radius:18px; }.chat-log { min-height:298px; padding:14px; }.bubble { max-width:84%; font-size:13px; }.guide-grid { grid-template-columns:1fr; }.guide-card { min-height:170px; padding:19px; }.human-card { grid-template-columns:1fr; gap:20px; padding:24px; border-radius:20px; }.human-card h2 { font-size:26px; }.human-card button { width:100%; }.footer-row { flex-direction:column; gap:3px; }.modal-panel { padding:26px 19px 22px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell">
+      <a class="brand" href="#top" aria-label="河科大新生通首页"><span class="brand-badge">B</span><span>河科大新生通</span></a>
+      <nav class="topnav" aria-label="页内导航"><a href="#ask">AI 答疑</a><a href="#sources">资料来源</a><button class="nav-help" type="button" data-open-human>转人工咨询</button></nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <span class="eyebrow"><i class="fa-solid fa-sparkles"></i> 2026 新生第一站</span>
+          <h1>河科大的问题，<br><strong>直接问 AI。</strong></h1>
+          <p class="hero-copy">这是一个面向新生的问答助手，不是把攻略再堆一遍。输入你的问题，优先得到有资料依据的回答；回答不了，就转人工确认。</p>
+          <form class="hero-question-form" id="heroQuestionForm"><input id="heroQuestion" type="text" maxlength="120" autocomplete="off" placeholder="直接输入问题：校园网怎么开？"><button type="submit"><i class="fa-solid fa-arrow-up"></i> 开始问</button></form>
+          <div class="hero-actions"><a class="primary-btn" href="#ask"><i class="fa-solid fa-message"></i> 进入 AI 答疑</a><a class="secondary-btn" href="#sources"><i class="fa-solid fa-shield-halved"></i> 看资料来源</a></div>
+          <div class="trust"><span><i class="fa-solid fa-circle-check"></i> 资料标注来源</span><span><i class="fa-solid fa-rotate"></i> 按学校通知更新</span><span><i class="fa-solid fa-user-group"></i> 可转人工咨询</span></div>
+        </div>
+        <div class="campus-card"><img src="assets/campus-hero-apple.png" alt="校园建筑与晴朗天空"><div class="campus-caption"><div><strong>回答有来源，不靠猜</strong><span>资料不足时，直接转人工确认</span></div><span class="year-pill">AI Q&A · 2026</span></div></div>
+      </div>
+    </section>
+
+    <section class="quick-section shell" aria-labelledby="quickTitle">
+      <div class="quick-head"><div><h2 id="quickTitle">不知道怎么问？从这里开始</h2><p>这些是 AI 最常收到的新生问题，点击后会直接进入问答。</p></div></div>
+      <div class="quick-grid">
+        <button class="quick-card" data-question="新生报到前要准备什么？"><i class="fa-solid fa-clipboard-check"></i><strong>报到准备</strong><small>材料与流程</small></button>
+        <button class="quick-card" data-question="宿舍相关信息在哪里看？"><i class="fa-solid fa-bed"></i><strong>住宿生活</strong><small>宿舍与日常</small></button>
+        <button class="quick-card" data-question="校园一卡通能做什么，怎么充值？"><i class="fa-solid fa-id-card"></i><strong>校园卡</strong><small>充值与补办</small></button>
+        <button class="quick-card" data-question="校园网怎么开通？"><i class="fa-solid fa-wifi"></i><strong>校园网络</strong><small>连接与服务</small></button>
+        <button class="quick-card" data-question="图书馆和校园服务怎么找？"><i class="fa-solid fa-book-open"></i><strong>校园服务</strong><small>图书馆与入口</small></button>
+        <button class="quick-card" data-question="我有个性化问题，想找学长咨询。"><i class="fa-solid fa-headset"></i><strong>人工咨询</strong><small>扫码加微信</small></button>
+      </div>
+    </section>
+
+    <section class="ai-wrap" id="ask" aria-labelledby="askTitle">
+      <div class="shell ai-layout">
+        <div class="ai-intro">
+          <div class="ai-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h2 id="askTitle">像聊天一样，<br><span>问校园里的事。</span></h2>
+          <p>答疑助手会优先匹配已整理的校园资料，并提示官方入口。涉及当年报到日期、收费和学院安排时，请以学校最新通知为准。</p>
+          <div class="ask-suggestions" aria-label="示例问题"><button type="button" data-question="新生报到前要准备什么？">报到准备什么？</button><button type="button" data-question="信息工程学院新生报到和通知在哪里看？">信息工程学院</button><button type="button" data-question="校园一卡通能做什么，怎么充值？">校园卡怎么用？</button><button type="button" data-question="校园网怎么开通？">校园网怎么开？</button><button type="button" data-question="学校有几个校区？">学校有几个校区？</button></div>
+        </div>
+        <section class="chat-card" aria-label="新生智能答疑">
+          <div class="chat-top"><div class="chat-title"><span class="dot"></span> 新生答疑助手</div><div class="chat-actions"><small id="chatMode">资料检索模式</small><button class="clear-chat" id="clearChat" type="button" aria-label="清空本次对话">清空</button></div></div>
+          <div class="chat-log" id="chatLog" aria-live="polite">
+            <div class="message"><span class="message-avatar">AI</span><div class="bubble">你好，欢迎来到河科大新生通。你可以问我报到、宿舍、校园卡、网络和校园服务，也可以直接转人工咨询。<span class="source">提示：具体时间、费用请以学校当年通知为准。</span></div></div>
+          </div>
+          <form class="chat-input-row" id="chatForm"><input id="chatInput" type="text" maxlength="120" autocomplete="off" placeholder="例如：校园卡怎么充值？" aria-label="输入你的问题"><button class="send-btn" type="submit" aria-label="发送问题"><i class="fa-solid fa-arrow-up"></i></button></form>
+          <p class="chat-note">默认使用本地资料库；如服务端配置了 AI 接口，网页会自动切换为 AI 回答。密钥仅应保存在服务端。</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="source-section shell" id="sources" aria-labelledby="guideTitle">
+      <h2 class="section-title" id="guideTitle">AI 的回答从哪里来？</h2>
+      <p class="section-lead">这里不是完整新生攻略，而是答疑助手优先检索的资料入口。它会给出来源，也会在缺少可靠资料时停止猜测并建议人工确认。</p>
+      <div class="guide-grid">
+        <article class="guide-card"><h3>学校与学院公告</h3><p>报到日期、学院地点、接站、收费等会随年份变化，问到这些内容时，答案会优先提示查看当年的官方通知。</p><a href="https://www.haust.edu.cn/" target="_blank" rel="noopener">查看学校公告 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></article>
+        <article class="guide-card"><h3>智慧校园服务资料</h3><p>校园卡、网络认证等需要按系统当前页面操作。答疑助手会把这些问题导向信息化建设与管理办公室的说明。</p><a href="https://metic.haust.edu.cn/info/1011/3820.htm" target="_blank" rel="noopener">查看服务说明 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></article>
+        <article class="guide-card"><h3>图书馆服务资料</h3><p>学习资源、借阅、开放与预约等问题，优先由图书馆公告核对；不确定的馆藏和开放时间不做臆测回答。</p><a href="https://lib.haust.edu.cn/" target="_blank" rel="noopener">查看图书馆资料 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></article>
+      </div>
+    </section>
+
+    <section class="human-section shell" aria-labelledby="humanTitle">
+      <div class="human-card"><div><span class="eyebrow"><i class="fa-solid fa-user-headset"></i> 人工支持</span><h2 id="humanTitle">资料里没有答案？直接找学长。</h2><p>专业、学院、宿舍分配等个性化问题，适合转人工确认。校园卡或校园网套餐相关问题，可扫码添加微信 xuedine1 私信咨询最实惠套餐与免费办理方式。</p></div><button type="button" data-open-human><i class="fa-brands fa-weixin"></i> 扫码加微信</button></div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-row"><span>河科大新生通 · 非学校官方平台 · 资料整理日期：2026-07-21</span><span>基础校情来源：<a href="https://www.haust.edu.cn/info/1053/1011.htm" target="_blank" rel="noopener">河南科技大学简介</a></span></div></footer>
+
+  <div class="modal" id="humanModal" role="dialog" aria-modal="true" aria-labelledby="humanModalTitle">
+    <div class="modal-panel"><button class="modal-close" type="button" data-close-human aria-label="关闭"><i class="fa-solid fa-xmark"></i></button><span class="eyebrow"><i class="fa-brands fa-weixin"></i> 转人工咨询</span><h2 id="humanModalTitle">添加“科大小猫”微信</h2><p>扫码后可咨询新生入学、校园生活等问题。请勿在聊天中发送身份证号、验证码等敏感信息。</p><img src="assets/wechat-qrcode.jpg" alt="科大小猫微信二维码"><button class="copy-wechat" type="button" id="copyWechat"><i class="fa-regular fa-copy"></i> 复制微信号 xuedine1</button></div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    /* 部署时由服务端注入：window.HAUST_AI_ENDPOINT = '/api/ask'。请勿在前端放置任何 API 密钥。 */
+    const knowledgeBase = [
+      { keywords:['报到','报道','材料','证件','录取','准备'], answer:'报到前建议先把身份证、录取通知书、相关档案或材料集中放入文件袋，并持续关注学校和学院发布的当年迎新说明。报到日期、学院地点、接站等内容会随年度调整，不要只依据往年攻略。', source:'建议优先核对学校官网与学院通知', url:'https://www.haust.edu.cn/' },
+      { keywords:['宿舍','住宿','空调','洗澡','洗浴','床位'], answer:'宿舍分配、入住时间和具体设施通常以学院及宿管安排为准。涉及床位、空调、洗浴和水电等问题，建议先查看本年度迎新通知；如果你的学院或校区情况特殊，可以转人工补充说明。', source:'当年迎新通知优先', url:'https://www.haust.edu.cn/' },
+      { keywords:['一卡通','校园卡','充值','补卡','饭卡','门禁'], answer:'校园一卡通可用于就餐、洗浴、借书、门禁、就医等校内场景。官方新生服务指南提供“我 i 科大”内校园卡充值和补办入口说明；实际操作页面以当日系统为准。若你想咨询校园卡相关套餐，可添加微信 xuedine1 私信，我会提供最实惠套餐与免费办理方式。', source:'信息化建设与管理办公室 · 新生智慧校园服务指南', url:'https://metic.haust.edu.cn/info/1011/3820.htm', human:true },
+      { keywords:['网络','校园网','wifi','WiFi','网费','上网'], answer:'校园网络开通、认证方式和套餐会随运营与系统调整。建议从信息化建设与管理办公室的服务入口查看最新版说明；如遇账号、认证或设备问题，优先联系官方用户服务。若你想咨询校园网相关套餐，可添加微信 xuedine1 私信，我会提供最实惠套餐与免费办理方式。', source:'信息化建设与管理办公室', url:'https://metic.haust.edu.cn/', human:true },
+      { keywords:['信息工程学院','信息学院','人工智能学院'], answer:'信息工程学院（人工智能学院）的新生报到、分班、课程和住宿等具体安排，请以学院当年发布的新生通知为准。学院官网的通知栏目是优先核对入口；涉及你个人的班级、宿舍或辅导员信息，请转人工或直接联系学院确认。', source:'河南科技大学信息工程学院（人工智能学院）', url:'https://dx.haust.edu.cn/' },
+      { keywords:['图书馆','借书','自习','学习','开馆'], answer:'学校图书馆由开元校区中心馆和西苑校区工学分馆组成。开馆安排、借阅规则、资源访问与座位服务请以图书馆网站公告为准。', source:'河南科技大学图书馆 · 本馆介绍', url:'https://lib.haust.edu.cn/bggk/bgjs.htm' },
+      { keywords:['校区','地址','开元','西苑','学校'], answer:'河南科技大学目前有开元、西苑两个校区。学校官网公布的开元校区地址为河南省洛阳市开元大道263号；不同学院、年级的上课与生活安排应以本人的录取和学院通知为准。', source:'河南科技大学简介（2025-04-15）', url:'https://www.haust.edu.cn/info/1053/1011.htm' },
+      { keywords:['人工','微信','学长','咨询','联系','帮忙'], answer:'可以转人工咨询。点击页面中的“扫码加微信”，添加“科大小猫”后，把你的年级、学院和问题一次说明清楚，获得回复会更快。', source:'人工咨询入口', human:true }
+    ];
+    const chatLog = document.getElementById('chatLog');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatCard = document.querySelector('.chat-card');
+    const chatMode = document.getElementById('chatMode');
+    const humanModal = document.getElementById('humanModal');
+    const toast = document.getElementById('toast');
+    const escapeHtml = text => text.replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+    const welcomeMessage = '你好，欢迎来到河科大新生通。你可以问我报到、宿舍、校园卡、网络和校园服务，也可以直接转人工咨询。<span class="source">提示：具体时间、费用请以学校当年通知为准。</span>';
+    const configuredEndpoint = String(window.HAUST_AI_ENDPOINT || (window.location.protocol.startsWith('http') ? '/api/ask' : '')).trim();
+    const canUseRemoteAI = /^(\/|https:\/\/)/.test(configuredEndpoint);
+    const conversation = [];
+    const wait = ms => new Promise(resolve => window.setTimeout(resolve, ms));
+    const safeText = value => escapeHtml(String(value || '')).replace(/\n/g, '<br>');
+    const safeUrl = value => { try { const url = new URL(String(value || ''), window.location.origin); return ['https:','http:'].includes(url.protocol) ? url.href : ''; } catch { return ''; } };
+    function addMessage(type, html, extraClass='') { const item=document.createElement('div'); item.className=`message ${type} ${extraClass}`.trim(); item.innerHTML=`<span class="message-avatar">${type==='user'?'我':'AI'}</span><div class="bubble">${html}</div>`; chatLog.appendChild(item); chatLog.scrollTop=chatLog.scrollHeight; return item; }
+    function resetConversation() { conversation.length=0; chatLog.innerHTML=''; addMessage('assistant', welcomeMessage); chatInput.focus(); }
+    function setLoading(active) { chatCard.classList.toggle('is-loading',active); chatInput.disabled=active; }
+    function getAnswer(question) { const q=question.toLowerCase(); const needsPersonalConfirmation=/(我的|专属|分配|哪一栋|哪间|房间|床位|具体安排|个人情况)/.test(q); if(needsPersonalConfirmation) return null; const ranked=knowledgeBase.map(item=>({item,score:item.keywords.reduce((sum,key)=>sum+(q.includes(key.toLowerCase())?1:0),0)})).sort((a,b)=>b.score-a.score); return ranked[0].score ? ranked[0].item : null; }
+    function sourceLink(label, url) { const href=safeUrl(url); return href ? ` · <a href="${href}" target="_blank" rel="noopener">${safeText(label || '查看资料来源')} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''; }
+    function renderLocalAnswer(question) { const result=getAnswer(question); if(!result) return '这类问题暂时没有匹配到可靠资料，尤其是涉及本年度报到安排、费用或个人情况时，建议转人工确认。<br><button class="copy-wechat" type="button" data-open-human style="margin-top:9px">扫码咨询学长</button><span class="source">我不会根据不完整资料猜测答案。</span>'; const human=result.human?'<br><button class="copy-wechat" type="button" data-open-human style="margin-top:9px">打开微信二维码</button>':''; return `${safeText(result.answer)}${human}<span class="source">来源：${safeText(result.source)}${sourceLink('查看资料来源',result.url)}</span>`; }
+    async function requestRemoteAnswer(question) { const controller=new AbortController(); const timer=window.setTimeout(()=>controller.abort(),18000); try { const response=await fetch(configuredEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question,history:conversation.slice(-6)}),signal:controller.signal}); if(!response.ok) throw new Error('AI service unavailable'); const data=await response.json(); if(!data || typeof data.answer!=='string' || !data.answer.trim()) throw new Error('Invalid AI response'); const source=data.source || (Array.isArray(data.sources) ? data.sources[0] : null) || {}; const human=data.needs_human===true ? '<br><button class="copy-wechat" type="button" data-open-human style="margin-top:9px">转人工确认</button>' : ''; return `${safeText(data.answer)}${human}<span class="source">${source && source.title ? '来源：'+safeText(source.title) : 'AI 回答请以学校最新通知为准'}${sourceLink('查看资料来源',source && source.url)}</span>`; } finally { window.clearTimeout(timer); } }
+    async function askQuestion(raw) { const question=raw.trim(); if(!question || chatInput.disabled) return; addMessage('user',safeText(question)); chatInput.value=''; conversation.push({role:'user',content:question}); const pending=addMessage('assistant','<i class="fa-solid fa-circle-notch fa-spin loading-mark"></i>正在检索可靠资料…','is-pending'); setLoading(true); const isPlanQuestion=/(校园卡|一卡通|饭卡|校园网|网络|wifi|网费|上网)/i.test(question); try { if(canUseRemoteAI && !isPlanQuestion) { chatMode.textContent='AI 回答模式'; const answer=await requestRemoteAnswer(question); pending.remove(); addMessage('assistant',answer); } else { chatMode.textContent='资料检索模式'; await wait(360); pending.remove(); addMessage('assistant',renderLocalAnswer(question)); } conversation.push({role:'assistant',content:'answer delivered'}); } catch { pending.remove(); chatMode.textContent='资料检索模式'; addMessage('assistant',renderLocalAnswer(question)); showToast('AI 服务暂不可用，已切换到资料检索'); } finally { setLoading(false); chatInput.focus(); } }
+    chatForm.addEventListener('submit', event=>{ event.preventDefault(); askQuestion(chatInput.value); });
+    document.getElementById('heroQuestionForm').addEventListener('submit', event=>{ event.preventDefault(); const question=document.getElementById('heroQuestion').value.trim(); if(!question) return; document.getElementById('ask').scrollIntoView({behavior:'smooth',block:'start'}); window.setTimeout(()=>askQuestion(question),360); document.getElementById('heroQuestion').value=''; });
+    document.querySelectorAll('[data-question]').forEach(button=>button.addEventListener('click',()=>{ document.getElementById('ask').scrollIntoView({behavior:'smooth',block:'center'}); window.setTimeout(()=>askQuestion(button.dataset.question),280); }));
+    document.getElementById('clearChat').addEventListener('click',resetConversation);
+    function openHuman() { humanModal.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeHuman() { humanModal.classList.remove('open'); document.body.style.overflow=''; }
+    document.addEventListener('click', event=>{ if(event.target.closest('[data-open-human]')) openHuman(); if(event.target.closest('[data-close-human]') || event.target===humanModal) closeHuman(); });
+    document.addEventListener('keydown', event=>{ if(event.key==='Escape') closeHuman(); });
+    function showToast(text) { toast.textContent=text; toast.classList.add('show'); window.setTimeout(()=>toast.classList.remove('show'),1800); }
+    document.getElementById('copyWechat').addEventListener('click',async()=>{ try { await navigator.clipboard.writeText('xuedine1'); showToast('微信号已复制'); } catch { showToast('微信号：xuedine1'); } });
+  </script>
+</body>
+</html>
